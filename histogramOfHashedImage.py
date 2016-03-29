@@ -1,6 +1,9 @@
 from PIL import Image
 import numpy
-
+import matplotlib.pyplot as plt
+import pylab
+import matplotlib.image as mpimg
+import numpy as np
 def smoothListGaussian(list,degree=5):
   window=degree*2-1
   weight=numpy.array([1.0]*window)
@@ -51,3 +54,8 @@ for x in range(len(plot)):
   plot_str += str(plot[x]) + "\n"
 
 print(plot_str)
+
+img = mpimg.imread('test.png')
+lum_img = img[:,:,0]
+plt.hist(lum_img.flatten(), 256, range=(0.0, 10.0), fc='k', ec='k')
+pylab.show()
